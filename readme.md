@@ -22,8 +22,8 @@
 // * Stage 2:
 //   - [x] I want to remove bills.
 // * Stage 3:
-//   - I want to edit existing bills.
-//   - I want to go back if I change my mind.
+//   - [x] I want to edit existing bills.
+//   - [x] I want to go back if I change my mind.
 //
 // Tips:
 // * Use the loop keyword to create an interactive menu.
