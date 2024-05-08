@@ -27,6 +27,15 @@ impl Item {
         }
     }
 
+    pub fn print_all(bills: &Vec<Self>) {
+        let mut c = 0;
+
+        for i in bills {
+            println!("[{:?}] {:?} - {:?}", (c+1), i.name(), i.amount());
+            c += 1;
+        }
+    }
+
     pub fn name(&self) -> String {
         self.name.clone()
     }

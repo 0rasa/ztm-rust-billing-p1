@@ -42,6 +42,18 @@ pub fn get_bill_index(len: usize, msg: &str) -> Option<usize> {
 }
 
 
+pub fn is_there_bills(len: usize) -> bool {
+    if len == 0 {
+        println!("There's no bills to remove.");
+        pause();
+
+        return false;
+    }
+
+    true
+}
+
+
 pub fn remove_bill(bills: &mut Vec<Item>) -> Result<(), ()> {
     // 1. print all bills names like:
     //      [1] Laptop Bill #1
@@ -50,21 +62,14 @@ pub fn remove_bill(bills: &mut Vec<Item>) -> Result<(), ()> {
     // 3. when user enter number i.e 1
     // 4. subtract 1 from the user input to get the index.
     //    need to make sure that the user entered a number and the number exists in the vec.
+    
     let length = bills.len();
 
-    if length == 0 {
-        println!("There's no bills to remove.");
-        pause();
-
-        return Err(());
+    if is_there_bills(length) == false {
+        return Err(())
     }
 
-    let mut c = 0;
-
-    for i in &mut *bills {
-        println!("[{:?}] {:?} - {:?}", (c+1), i.name(), i.amount());
-        c += 1;
-    }
+    Item::print_all(&bills);
 
     loop {
         let index = get_bill_index(length - 1, "remove").unwrap();
