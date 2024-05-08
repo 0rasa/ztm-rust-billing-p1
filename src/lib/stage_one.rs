@@ -1,11 +1,19 @@
 use std::io;
 
 
+
 pub fn get_input() -> io::Result<String> {
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer)?;
     Ok(buffer.trim().to_owned())
 }
+
+
+pub fn pause() {
+    println!("Press [Enter] to continue the program.");
+    let _ = get_input();
+}
+
 
 pub struct Item {
     name: String,
@@ -17,6 +25,14 @@ impl Item {
         Self {
             name, amount
         }
+    }
+
+    pub fn name(&self) -> String {
+        self.name.clone()
+    }
+
+    pub fn amount(&self) -> f64 {
+        self.amount
     }
 
     fn print(&self) {
@@ -65,6 +81,8 @@ pub fn add_bill(bills: &mut Vec<Item>) -> io::Result<()> {
     item.print();
     bills.push(item);
 
+    pause();
+
     Ok(())
 }
 
@@ -75,4 +93,8 @@ pub fn view_bills(bills: &Vec<Item>) {
         i.print();
         println!("----------------------");
     }
+
+    pause();
+
 }
+

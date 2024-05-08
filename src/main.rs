@@ -17,7 +17,7 @@
 //   - [x] I want to add bills, including the name and amount owed.
 //   - [x] I want to view existing bills.
 // * Stage 2:
-//   - I want to remove bills.
+//   - [x] I want to remove bills.
 // * Stage 3:
 //   - I want to edit existing bills.
 //   - I want to go back if I change my mind.
@@ -30,6 +30,8 @@
 //   hashmap will be easier to work with at stages 2 and 3.
 
 use custom_lib::stage_one as so;
+use custom_lib::stage_two as st;
+
 
 
 fn main() {
@@ -56,6 +58,12 @@ fn main() {
                 },
 
                 "2" => so::view_bills(&bills),
+
+                "3" => {
+                    let _ = st::remove_bill(&mut bills);
+
+                    continue;
+                },
     
                 "6" => {
                     println!("Exiting ...");
