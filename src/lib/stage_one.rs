@@ -15,6 +15,7 @@ pub fn pause() {
 }
 
 
+#[derive(Clone)]
 pub struct Item {
     name: String,
     amount: f64
@@ -25,6 +26,14 @@ impl Item {
         Self {
             name, amount
         }
+    }
+
+    pub fn set_name(&mut self, name: String) {
+        self.name = name;
+    }
+
+    pub fn set_amount(&mut self, amount: f64) {
+        self.amount = amount;
     }
 
     pub fn print_all(bills: &Vec<Self>) {
@@ -50,7 +59,7 @@ impl Item {
 }
 
 
-fn get_bill_amount() -> io::Result<f64> {
+pub fn get_bill_amount() -> io::Result<f64> {
     loop {
         println!("Enter bill amount:");
         let amount_result = get_input()?;
@@ -66,7 +75,7 @@ fn get_bill_amount() -> io::Result<f64> {
     }
 }
 
-fn get_bill_name() -> io::Result<String> {
+pub fn get_bill_name() -> io::Result<String> {
     loop {
         println!("Enter bill name:");
         let name = get_input()?;
@@ -86,9 +95,13 @@ pub fn add_bill(bills: &mut Vec<Item>) -> io::Result<()> {
 
     let item = Item::new(name, amount);
 
+    println!("----------------------");
+
     println!("Adding Bill:");
     item.print();
     bills.push(item);
+    println!("----------------------");
+
 
     pause();
 

@@ -42,9 +42,9 @@ pub fn get_bill_index(len: usize, msg: &str) -> Option<usize> {
 }
 
 
-pub fn is_there_bills(len: usize) -> bool {
+pub fn is_there_bills(len: usize, msg: &str) -> bool {
     if len == 0 {
-        println!("There's no bills to remove.");
+        println!("There's no bills to {:?}.", msg);
         pause();
 
         return false;
@@ -54,6 +54,9 @@ pub fn is_there_bills(len: usize) -> bool {
 }
 
 
+
+// Note: i'm returning empty result to quickly exit from the function,
+// in case there's no bills.
 pub fn remove_bill(bills: &mut Vec<Item>) -> Result<(), ()> {
     // 1. print all bills names like:
     //      [1] Laptop Bill #1
@@ -65,7 +68,7 @@ pub fn remove_bill(bills: &mut Vec<Item>) -> Result<(), ()> {
     
     let length = bills.len();
 
-    if is_there_bills(length) == false {
+    if is_there_bills(length, "remove") == false {
         return Err(())
     }
 

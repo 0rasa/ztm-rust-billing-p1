@@ -31,6 +31,8 @@
 
 use custom_lib::stage_one as so;
 use custom_lib::stage_two as st;
+use custom_lib::stage_three as sh;
+
 
 
 
@@ -61,6 +63,12 @@ fn main() {
 
                 "3" => {
                     let _ = st::remove_bill(&mut bills);
+
+                    continue;
+                },
+
+                "4" => {
+                    let _ = sh::edit_bill(&mut bills);
 
                     continue;
                 },
